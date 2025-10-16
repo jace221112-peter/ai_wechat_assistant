@@ -16,18 +16,21 @@
 
 ---
 
-## 🧩 系统架构
+## 🧩 系统架构（简洁展示）
 
-```mermaid
-graph TD
-    A["WeCom / Feishu / n8n Webhook"] -->|HTTP POST| B["FastAPI 接口 /wechat"]
-    B --> C["LangChain Logic Layer (chatbot.py)"]
-    C --> D["DeepSeek API 调用"]
-    C --> E["Knowledge Folder (knowledge/)"]
-    E --> F["Chroma 向量数据库 (chroma_db/)"]
-    F --> G["Embedding Model (bge-m3)"]
-    C --> H["Session 记忆管理"]
-    B --> I["返回 JSON 回复"]
+系统整体流程如下：
+
+| 步骤 | 模块 | 说明 |
+|------|------|------|
+| ① | **消息入口** | 通过企业微信 / 飞书 / n8n Webhook 接收用户请求 |
+| ② | **FastAPI 接口层** | 接收 HTTP POST 请求 `/wechat` 并解析消息 |
+| ③ | **LangChain 逻辑层** | 执行对话逻辑（chatbot.py），根据 session 管理上下文 |
+| ④ | **DeepSeek 模型层** | 调用 DeepSeek API 生成智能回复 |
+| ⑤ | **知识库系统** | 从 `knowledge/` 文件夹加载文档，Chroma 构建向量数据库 |
+| ⑥ | **嵌入模型 bge-m3** | 提供中文语义检索能力 |
+| ⑦ | **返回响应** | FastAPI 返回 JSON 结果，推送回 Webhook 源平台 |
+
+
 ⚙️ 本地运行步骤
 1️⃣ 环境准备
 bash
@@ -60,10 +63,17 @@ arduino
 http://127.0.0.1:8000/docs
 🌈 示例展示
 模块	界面截图
-Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
-控制台运行	<img src="assets/console.png" width="600">
-响应示例	<img src="assets/response.png" width="600">
-PowerShell 启动	<img src="assets/powershell.png" width="600">
+### Swagger 接口文档
+![Swagger UI](assets/swagger_ui.png)
+
+### 控制台运行
+![Console](assets/console.png)
+
+### 响应示例
+![Response](assets/response.png)
+
+### PowerShell 启动
+![PowerShell](assets/powershell.png)
 
 📁 图片请放入 assets/ 文件夹中，路径如：assets/swagger_ui.png
 
