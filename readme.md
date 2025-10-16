@@ -66,20 +66,7 @@ PowerShell 启动	<img src="assets/powershell.png" width="600">
 
 
 📂 项目结构
-bash
-复制代码
-📦 ai_wechat_assistant/
-│
-├── 🧠 app.py                # FastAPI 主程序入口
-├── 🤖 chatbot.py            # LangChain 智能体逻辑
-├── 📦 requirements.txt      # 项目依赖
-├── ⚙️ .env.example          # 环境变量模板
-├── 🚀 start.ps1             # 启动脚本
-│
-├── 📘 knowledge/            # 知识库存放目录（支持 WPS / Docx / PDF / TXT）
-├── 💾 chroma_db/            # 向量数据库（自动生成）
-├── 🖼️ assets/               # 图片资源（Swagger 截图等）
-└── 🧩 venv/                 # 虚拟环境（已忽略）
+项目结构示例	<img src="assets/construction.png" width="600">
 💬 项目说明
 本项目核心由 LangChain 提供语义检索能力，
 DeepSeek API 负责自然语言理解与生成。
