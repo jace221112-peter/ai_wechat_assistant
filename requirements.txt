@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+langchain
+langchain-community
+chromadb
+pydantic
+watchdog
+torch
+transformers
+sentence-transformers
+huggingface-hub
+unstructured
+pypdf
+python-docx
+docx2txt
