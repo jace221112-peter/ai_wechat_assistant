@@ -16,21 +16,18 @@
 
 ---
 
-## 🧩 系统架构（简洁展示）
+## 🧩 系统架构
 
-系统整体流程如下：
-
-| 步骤 | 模块 | 说明 |
-|------|------|------|
-| ① | **消息入口** | 通过企业微信 / 飞书 / n8n Webhook 接收用户请求 |
-| ② | **FastAPI 接口层** | 接收 HTTP POST 请求 `/wechat` 并解析消息 |
-| ③ | **LangChain 逻辑层** | 执行对话逻辑（chatbot.py），根据 session 管理上下文 |
-| ④ | **DeepSeek 模型层** | 调用 DeepSeek API 生成智能回复 |
-| ⑤ | **知识库系统** | 从 `knowledge/` 文件夹加载文档，Chroma 构建向量数据库 |
-| ⑥ | **嵌入模型 bge-m3** | 提供中文语义检索能力 |
-| ⑦ | **返回响应** | FastAPI 返回 JSON 结果，推送回 Webhook 源平台 |
-
-
+```mermaid
+graph TD
+    A[企业微信 / 飞书 / n8n Webhook] -->|HTTP POST| B[FastAPI 接口 /wechat]
+    B --> C[LangChain 逻辑层 chatbot.py]
+    C --> D[DeepSeek API 调用]
+    C --> E[知识库管理 (knowledge/)]
+    E --> F[Chroma 向量数据库 chroma_db/]
+    F --> G[嵌入模型 bge-m3]
+    C --> H[Session 记忆管理]
+    B --> I[返回 JSON 回复]
 ⚙️ 本地运行步骤
 1️⃣ 环境准备
 bash
@@ -41,7 +38,7 @@ python -m venv venv
 .\venv\Scripts\activate
 pip install -r requirements.txt
 2️⃣ 配置环境变量
-新建 .env 文件，内容如下：
+创建 .env 文件，内容如下：
 
 ini
 复制代码
@@ -51,33 +48,22 @@ ASSISTANT_ROLE=你的人设（例如：你是一名亲切的售后客服）
 bash
 复制代码
 uvicorn app:app --reload
-控制台输出示例：
-
-nginx
-复制代码
-Uvicorn running on http://127.0.0.1:8000
-打开浏览器访问接口文档：
+运行成功后访问：
 
 arduino
 复制代码
 http://127.0.0.1:8000/docs
 🌈 示例展示
 模块	界面截图
-### Swagger 接口文档
-![Swagger UI](assets/swagger_ui.png)
-
-### 控制台运行
-![Console](assets/console.png)
-
-### 响应示例
-![Response](assets/response.png)
-
-### PowerShell 启动
-![PowerShell](assets/powershell.png)
+Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
+控制台运行	<img src="assets/console.png" width="600">
+响应示例	<img src="assets/response.png" width="600">
+PowerShell 启动	<img src="assets/powershell.png" width="600">
 
 
-## 📂 项目结构
-
+📂 项目结构
+bash
+复制代码
 📦 ai_wechat_assistant/
 │
 ├── 🧠 app.py                # FastAPI 主程序入口
@@ -90,21 +76,18 @@ http://127.0.0.1:8000/docs
 ├── 💾 chroma_db/            # 向量数据库（自动生成）
 ├── 🖼️ assets/               # 图片资源（Swagger 截图等）
 └── 🧩 venv/                 # 虚拟环境（已忽略）
-
-
-
 💬 项目说明
 本项目核心由 LangChain 提供语义检索能力，
 DeepSeek API 负责自然语言理解与生成。
 通过 FastAPI 提供统一的 HTTP 接口，
 可嵌入企业微信客服、飞书机器人、n8n 工作流，实现自动化智能回复。
 
-🧱 依赖说明
-主要依赖	说明
-FastAPI	Web 框架
+📚 依赖说明
+依赖库	说明
+FastAPI	轻量级 Web 框架
 LangChain	智能体框架
 ChromaDB	本地向量数据库
-HuggingFace bge-m3	中文嵌入模型
+bge-m3 (HuggingFace)	中文嵌入模型
 Watchdog	文件监控（热加载）
 dotenv	环境变量管理
 Pydantic	数据模型定义
@@ -118,7 +101,7 @@ Pydantic	数据模型定义
 
  打包 Docker 容器部署
 
-🪄 开发者信息
+👨‍💻 开发者信息
 作者：@jace221112-peter
 项目地址：https://github.com/jace221112-peter/ai_wechat_assistant
 
