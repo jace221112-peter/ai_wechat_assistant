@@ -106,21 +106,21 @@ DeepSeek API 负责自然语言理解与生成
 
 📚 依赖说明
 
-依赖库		说明
+依赖库---------------说明
 
-FastAPI		轻量级 Web 框架
+FastAPI--------------轻量级 Web 框架
 
-LangChain		智能体框架
+LangChain----------智能体框架
 
-ChromaDB		本地向量数据库
+ChromaDB----------本地向量数据库
 
-bge-m3 (HuggingFace)		中文嵌入模型
+bge-m3-------------中文嵌入模型
 
-Watchdog			文件监控（热加载）
+Watchdog	----------文件监控（热加载）
 
-dotenv		环境变量管理
+dotenv--------------环境变量管理
 
-Pydantic		数据模型定义
+Pydantic------------数据模型定义
 
 
 🚀 后续扩展计划
