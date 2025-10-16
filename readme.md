@@ -33,61 +33,78 @@
 
 
 ⚙️ 本地运行步骤
+
 1️⃣ 环境准备
-bash
-复制代码
+
 git clone https://github.com/jace221112-peter/ai_wechat_assistant.git
 cd ai_wechat_assistant
 python -m venv venv
 .\venv\Scripts\activate
 pip install -r requirements.txt
+
 2️⃣ 配置环境变量
+
 创建 .env 文件，内容如下：
 
-ini
-复制代码
+
 DEEPSEEK_API_KEY=你的API密钥
 ASSISTANT_ROLE=你的人设（例如：你是一名亲切的售后客服）
+
 3️⃣ 启动服务
-bash
-复制代码
+
 uvicorn app:app --reload
+
 运行成功后访问：
 
-arduino
-复制代码
 http://127.0.0.1:8000/docs
+
 
 
 🌈 示例展示模块	
 界面截图
 
-Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
+Swagger 接口文档：
+<img src="assets/swagger_ui.png" width="600">
 
-控制台运行	<img src="assets/console.png" width="600">
+控制台运行：
+<img src="assets/console.png" width="600">
 
-响应示例	<img src="assets/response.png" width="600">
+响应示例：
+<img src="assets/response.png" width="600">
 
-PowerShell 启动	<img src="assets/powershell.png" width="600">
+PowerShell 启动	：
+<img src="assets/powershell.png" width="600">
 
 
 📂 项目结构
-项目结构示例	<img src="assets/construction.png" width="600">
+
+项目结构示例：
+<img src="assets/construction.png" width="600">
+
 💬 项目说明
-本项目核心由 LangChain 提供语义检索能力，
-DeepSeek API 负责自然语言理解与生成。
-通过 FastAPI 提供统一的 HTTP 接口，
+本项目核心由 LangChain 提供语义检索能力
+DeepSeek API 负责自然语言理解与生成
+通过 FastAPI 提供统一的 HTTP 接口
 可嵌入企业微信客服、飞书机器人、n8n 工作流，实现自动化智能回复。
 
 📚 依赖说明
+
 依赖库	说明
+
 FastAPI	轻量级 Web 框架
+
 LangChain	智能体框架
+
 ChromaDB	本地向量数据库
+
 bge-m3 (HuggingFace)	中文嵌入模型
+
 Watchdog	文件监控（热加载）
+
 dotenv	环境变量管理
+
 Pydantic	数据模型定义
+
 
 🚀 后续扩展计划
  接入 Feishu、WeCom 自动化客服
