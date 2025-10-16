@@ -59,8 +59,9 @@ arduino
 http://127.0.0.1:8000/docs
 
 
-🌈 示例展示
-模块	界面截图
+🌈 示例展示模块	
+界面截图
+
 Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
 
 控制台运行	<img src="assets/console.png" width="600">
