@@ -18,16 +18,20 @@
 
 ## 🧩 系统架构
 
-```mermaid
-graph TD
-    A[企业微信 / 飞书 / n8n Webhook] -->|HTTP POST| B[FastAPI 接口 /wechat]
-    B --> C[LangChain 逻辑层 chatbot.py]
-    C --> D[DeepSeek API 调用]
-    C --> E[知识库管理 (knowledge/)]
-    E --> F[Chroma 向量数据库 chroma_db/]
-    F --> G[嵌入模型 bge-m3]
-    C --> H[Session 记忆管理]
-    B --> I[返回 JSON 回复]
+📩 企业微信 / 飞书 / n8n Webhook  
+  ⬇️ HTTP POST  
+⚙️ FastAPI 接口（/wechat）  
+  ⬇️  
+🧠 LangChain 逻辑层（chatbot.py）  
+ ├── DeepSeek API 调用  
+ ├── 知识库管理（knowledge/）  
+ │  ⬇️ Chroma 向量数据库（chroma_db/）  
+ │   ⬇️ 嵌入模型 bge-m3  
+ └── Session 记忆管理  
+ ⬇️  
+📤 返回 JSON 回复
+
+
 ⚙️ 本地运行步骤
 1️⃣ 环境准备
 bash
