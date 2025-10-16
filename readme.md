@@ -20,14 +20,14 @@
 
 ```mermaid
 graph TD
-    A[企业微信 / 飞书 / n8n Webhook] -->|HTTP POST| B[FastAPI 接口 /wechat]
-    B --> C[LangChain 逻辑层 chatbot.py]
-    C --> D[DeepSeek API 调用]
-    C --> E[知识库管理 (knowledge/)]
-    E --> F[Chroma 向量数据库 chroma_db/]
-    F --> G[嵌入模型 bge-m3]
-    C --> H[Session 记忆管理]
-    B --> I[返回 JSON 回复]
+    A["WeCom / Feishu / n8n Webhook"] -->|HTTP POST| B["FastAPI 接口 /wechat"]
+    B --> C["LangChain Logic Layer (chatbot.py)"]
+    C --> D["DeepSeek API 调用"]
+    C --> E["Knowledge Folder (knowledge/)"]
+    E --> F["Chroma 向量数据库 (chroma_db/)"]
+    F --> G["Embedding Model (bge-m3)"]
+    C --> H["Session 记忆管理"]
+    B --> I["返回 JSON 回复"]
 ⚙️ 本地运行步骤
 1️⃣ 环境准备
 bash
@@ -53,21 +53,19 @@ uvicorn app:app --reload
 nginx
 复制代码
 Uvicorn running on http://127.0.0.1:8000
-浏览器打开：
+打开浏览器访问接口文档：
 
 arduino
 复制代码
 http://127.0.0.1:8000/docs
+🌈 示例展示
+模块	界面截图
+Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
+控制台运行	<img src="assets/console.png" width="600">
+响应示例	<img src="assets/response.png" width="600">
+PowerShell 启动	<img src="assets/powershell.png" width="600">
 
-## 🧩 示例展示
-| 模块 | 界面截图 |
-|------|----------|
-| Swagger 接口文档 | ![Swagger UI](assets/swagger_ui.png) |
-| 控制台运行 | ![Console](assets/console.png) |
-| 响应示例 | ![Response](assets/response.png) |
-| powershell示例 | ![Powershell](assets/powershell.png) |
-
-图片请放入 assets/ 文件夹中，路径如：assets/swagger_ui.png。
+📁 图片请放入 assets/ 文件夹中，路径如：assets/swagger_ui.png
 
 📂 项目结构
 bash
@@ -100,7 +98,7 @@ Watchdog	文件监控（热加载）
 dotenv	环境变量管理
 Pydantic	数据模型定义
 
-🧩 后续扩展计划
+🚀 后续扩展计划
  接入 Feishu、WeCom 自动化客服
 
  增加多知识库管理后台
@@ -113,4 +111,4 @@ Pydantic	数据模型定义
 作者：@jace221112-peter
 项目地址：https://github.com/jace221112-peter/ai_wechat_assistant
 
-如果你喜欢这个项目，请为它点一颗 ⭐Star！
+如果你喜欢这个项目，请为它点一颗 ⭐ Star！
