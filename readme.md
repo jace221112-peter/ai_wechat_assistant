@@ -57,11 +57,16 @@ uvicorn app:app --reload
 arduino
 复制代码
 http://127.0.0.1:8000/docs
+
+
 🌈 示例展示
 模块	界面截图
 Swagger 接口文档	<img src="assets/swagger_ui.png" width="600">
+
 控制台运行	<img src="assets/console.png" width="600">
+
 响应示例	<img src="assets/response.png" width="600">
+
 PowerShell 启动	<img src="assets/powershell.png" width="600">
 
 
